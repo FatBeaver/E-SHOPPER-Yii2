@@ -26,6 +26,7 @@ class EshoperAsset extends AssetBundle
         "js/jquery.scrollUp.min.js",
         "js/price-range.js",
         "js/jquery.prettyPhoto.js",
+        "js/jquery-ui.min.js",
         "js/main.js",
     ];
     public $depends = [
