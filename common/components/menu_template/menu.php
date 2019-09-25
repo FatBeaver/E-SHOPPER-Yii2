@@ -25,6 +25,8 @@ use yii\helpers\Url;
 </div>
 <?php endif; ?>
 
+
+
 <?php if(!isset($category['childs'])): ?>
 <div class="panel panel-default">
     <div class="panel-heading">

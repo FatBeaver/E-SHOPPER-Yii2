@@ -2,6 +2,7 @@
 
 use frontend\assets\EshoperAsset;
 use frontend\assets\MinIE9Asset;
+use yii\helpers\Url;
 
 EshoperAsset::register($this);
 MinIE9Asset::register($this);
@@ -14,7 +15,7 @@ MinIE9Asset::register($this);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Home | E-Shopper</title>
+    <title><?= $this->title ?></title>
 
 	<?php 
 	//	$this->registerJsFile('js/html5shiv.js', [
@@ -49,7 +50,7 @@ MinIE9Asset::register($this);
 						<div class="contactinfo">
 							<ul class="nav nav-pills">
 								<li><a href="#"><i class="fa fa-phone"></i> +2 95 01 88 821</a></li>
-								<li><a href="#"><i class="fa fa-envelope"></i> info@domain.com</a></li>
+								<li><a href="#"><i class="fa fa-envelope"></i>childrenofbodom737@gmail.com</a></li>
 							</ul>
 						</div>
 					</div>
@@ -73,7 +74,7 @@ MinIE9Asset::register($this);
 				<div class="row">
 					<div class="col-sm-4">
 						<div class="logo pull-left">
-							<a href="index.html"><img src="images/home/logo.png" alt="" /></a>
+							<a href="<?= Url::home() ?>"><img src="/images/home/logo.png" alt="home_logo"/></a>
 						</div>
 						<div class="btn-group pull-right">
 							<div class="btn-group">
@@ -176,7 +177,7 @@ MinIE9Asset::register($this);
 							<div class="video-gallery text-center">
 								<a href="#">
 									<div class="iframe-img">
-										<img src="images/home/iframe1.png" alt="" />
+										<img src="/images/home/iframe1.png" alt="" />
 									</div>
 									<div class="overlay-icon">
 										<i class="fa fa-play-circle-o"></i>
@@ -191,7 +192,7 @@ MinIE9Asset::register($this);
 							<div class="video-gallery text-center">
 								<a href="#">
 									<div class="iframe-img">
-										<img src="images/home/iframe2.png" alt="" />
+										<img src="/images/home/iframe2.png" alt="" />
 									</div>
 									<div class="overlay-icon">
 										<i class="fa fa-play-circle-o"></i>
@@ -206,7 +207,7 @@ MinIE9Asset::register($this);
 							<div class="video-gallery text-center">
 								<a href="#">
 									<div class="iframe-img">
-										<img src="images/home/iframe3.png" alt="" />
+										<img src="/images/home/iframe3.png" alt="" />
 									</div>
 									<div class="overlay-icon">
 										<i class="fa fa-play-circle-o"></i>
@@ -221,7 +222,7 @@ MinIE9Asset::register($this);
 							<div class="video-gallery text-center">
 								<a href="#">
 									<div class="iframe-img">
-										<img src="images/home/iframe4.png" alt="" />
+										<img src="/images/home/iframe4.png" alt="" />
 									</div>
 									<div class="overlay-icon">
 										<i class="fa fa-play-circle-o"></i>
@@ -234,7 +235,7 @@ MinIE9Asset::register($this);
 					</div>
 					<div class="col-sm-3">
 						<div class="address">
-							<img src="images/home/map.png" alt="" />
+							<img src="/images/home/map.png" alt="" />
 							<p>505 S Atlantic Ave Virginia Beach, VA(Virginia)</p>
 						</div>
 					</div>

@@ -27,9 +27,10 @@ class MenuWidget extends Widget
     {   
         //get cache
         $menu = Yii::$app->cache->get('menu');
-        if ($menu !== false) return $menu;
-
-        //  print_r($menu);exit;
+        if($menu != false) {
+            return $menu;
+        }
+        //print_r($menu);exit;
         $this->data = Category::find()->indexBy('id')->asArray()->all();
         $this->tree = $this->getTree();
         $this->menuHtml = $this->getMenuHtml($this->tree);
