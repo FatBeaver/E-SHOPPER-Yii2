@@ -15,14 +15,14 @@ class ProductController extends AppController
 
         $product = Product::find()->with('category')->where(['id' => $id])->one();
         $categoryProducts = Product::find()->where(['category_id' => $product->category->id])->all();
-        $hitProducts = Product::find()->where(['hit' => 1])->limit(9)->orderBy('id DESC')->all();
+        $recommendedProducts = Product::find()->where(['hit' => 1])->limit(9)->orderBy('id DESC')->all();
         
         $this->setMeta("E-SHOPPER | " . $product->name, $product->keywords, $product->description);
 
         return $this->render('view', [
             'product' => $product,
             'categoryProducts' => $categoryProducts,
-            'hitProducts' => $hitProducts
+            'recommendedProducts' => $recommendedProducts
         ]);
     }
 }
