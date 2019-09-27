@@ -2,6 +2,7 @@
 
 use common\components\MenuWidget;
 use yii\helpers\Html;
+use yii\helpers\Url;
 ?>
 
 <section id="slider">
@@ -105,17 +106,6 @@ use yii\helpers\Html;
                     </div>
                     <!--/brands_products-->
 
-                    <div class="price-range">
-                        <!--price-range-->
-                        <h2>Price Range</h2>
-                        <div class="well text-center">
-                            <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="600"
-                                data-slider-step="5" data-slider-value="[250,450]" id="sl2"><br />
-                            <b class="pull-left">$ 0</b> <b class="pull-right">$ 600</b>
-                        </div>
-                    </div>
-                    <!--/price-range-->
-
                     <div class="shipping text-center">
                         <!--shipping-->
                         <img src="/images/home/shipping.jpg" alt="" />
@@ -139,14 +129,22 @@ use yii\helpers\Html;
                                         <?= Html::img("@web/images/products/{$hit->img}", ['alt' => $hit->name, 
                                         'height' => '230vh', 'max-width' => '300px']) ?>
                                         <h2>$<?= $hit->price ?></h2>
-                                        <p><?= $hit->name ?></p>
+                                        <p><a href="<?= Url::to(['product/view', 'id' => $hit->id]) ?>" 
+                                            style="color:#555">
+                                            <?= $hit->name ?>
+                                            </a>
+                                        </p>
                                         <a href="#" class="btn btn-default add-to-cart"><i
                                             class="fa fa-shopping-cart"></i>Add to cart</a>
                                     </div>
                                     <div class="product-overlay">
                                         <div class="overlay-content">
                                             <h2>$<?= $hit->price ?></h2>
-                                            <p><?= $hit->name ?></p>
+                                                <p><a href="<?= Url::to(['product/view', 'id' => $hit->id]) ?>" 
+                                                style="color:#555">
+                                                <?= $hit->name ?>
+                                                </a>
+                                            </p>
                                             <a href="#" class="btn btn-default add-to-cart"><i
                                                 class="fa fa-shopping-cart"></i>Add to cart</a>
                                         </div>

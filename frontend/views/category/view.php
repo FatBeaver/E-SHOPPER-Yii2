@@ -2,6 +2,7 @@
 
 use common\components\MenuWidget;
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\widgets\LinkPager;
 
 ?>
@@ -37,15 +38,7 @@ use yii\widgets\LinkPager;
                                 <li><a href=""> <span class="pull-right">(4)</span>Rösch creative culture</a></li>
                             </ul>
                         </div>
-                    </div><!--/brands_products-->
-                    
-                    <div class="price-range"><!--price-range-->
-                        <h2>Price Range</h2>
-                        <div class="well">
-                                <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="600" data-slider-step="5" data-slider-value="[250,450]" id="sl2" ><br />
-                                <b>$ 0</b> <b class="pull-right">$ 600</b>
-                        </div>
-                    </div><!--/price-range-->
+                    </div><!--/brands_products-->>
                     
                     <div class="shipping text-center"><!--shipping-->
                         <img src="/images/home/shipping.jpg" alt="" />
@@ -66,17 +59,22 @@ use yii\widgets\LinkPager;
                                     <?= Html::img("@web/images/products/{$product->img}", ['alt' => $product->name, 
                                     'height' => '230vh']) ?>
                                     <h2>$<?= $product->price; ?></h2>
-                                    <p><?= substr($product->name, 0, 25);?>
+                                    <p><a href="<?= Url::to(['product/view', 'id' => $product->id]) ?>" 
+                                            style="color:#555"><?= substr($product->name, 0, 25);?>
                                     <?php if(mb_strlen($product->name) > 24): ?> 
                                     ...
-                                    <?php endif; ?>
+                                    <?php endif; ?></a>
                                     </p>
                                     <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                 </div>
                                 <div class="product-overlay">
                                     <div class="overlay-content">
                                         <h2>$<?= $product->price; ?></h2>
-                                        <p><?= $product->name; ?></p>
+                                        <p><a href="<?= Url::to(['product/view', 'id' => $product->id]) ?>" 
+                                            style="color:#555">
+                                            <?= $product->name ?>
+                                            </a>
+                                        </p>
                                         <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                     </div>
                                 </div>
