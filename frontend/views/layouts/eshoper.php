@@ -3,6 +3,7 @@
 use frontend\assets\EshoperAsset;
 use frontend\assets\MinIE9Asset;
 use yii\helpers\Url;
+use yii\helpers\Html;
 
 EshoperAsset::register($this);
 MinIE9Asset::register($this);
@@ -50,7 +51,7 @@ MinIE9Asset::register($this);
 						<div class="contactinfo">
 							<ul class="nav nav-pills">
 								<li><a href="#"><i class="fa fa-phone"></i> +2 95 01 88 821</a></li>
-								<li><a href="#"><i class="fa fa-envelope"></i>childrenofbodom737@gmail.com</a></li>
+								<li><a href="#"><i class="fa fa-envelope"></i> childrenofbodom737@gmail.com</a></li>
 							</ul>
 						</div>
 					</div>
@@ -151,9 +152,11 @@ MinIE9Asset::register($this);
 						</div>
 					</div>
 					<div class="col-sm-3">
-						<div class="search_box pull-right">
-							<input type="text" placeholder="Search"/>
-						</div>
+						<form action="<?= Url::to(['category/search']) ?>" method="GET">
+							<div class="search_box pull-right">
+								<input type="text" placeholder="Search" name="userQuery"/>
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>
