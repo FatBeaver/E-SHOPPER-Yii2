@@ -18,7 +18,7 @@ class ProductController extends AppController
         if(empty($product))
             throw new HttpException(404, "Такого товара нет");
 
-        $categoryProducts = Product::find()->where(['category_id' => $product->category->id])->all();
+        $categoryProducts = Product::find()->where(['category_id' => $product->category->id])->limit(4)->all();
         $recommendedProducts = Product::find()->where(['hit' => 1])->limit(9)->orderBy('id DESC')->all();
         
         $this->setMeta("E-SHOPPER | " . $product->name, $product->keywords, $product->description);

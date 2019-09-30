@@ -13,10 +13,13 @@ class CategoryController extends AppController
 {
     public function actionIndex()
     {   
+        $recommendedProducts = Product::find()->where(['hit' => 1])->limit(9)->orderBy('id DESC')->all();
         $hits_product = Product::find()->where(['hit' => 1])->limit(6)->all(); 
         $this->setMeta("E-SHOPPER");
+
         return $this->render('index', [
             'hits_product' => $hits_product,
+            'recommendedProducts' => $recommendedProducts
         ]);
     }
 

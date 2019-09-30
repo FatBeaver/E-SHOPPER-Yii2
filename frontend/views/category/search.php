@@ -52,6 +52,7 @@ use yii\widgets\LinkPager;
                     <h2 class="title text-center">Результаты запроса: <?= Html::encode($userQuery) ?></h2>
                     <?php if (!empty($products)): ?>
                     <?php foreach($products as $product): ?>
+                   
                     <div class="col-sm-4">
                         <div class="product-image-wrapper">
                             <div class="single-products">
@@ -60,12 +61,12 @@ use yii\widgets\LinkPager;
                                     'height' => '230vh']) ?>
                                     <h2>$<?= $product->price; ?></h2>
                                     <p><a href="<?= Url::to(['product/view', 'id' => $product->id]) ?>" 
-                                            style="color:#555"><?= substr($product->name, 0, 25);?>
+                                            style="color:#555"><?= mb_substr($product->name, 0, 25);?>
                                     <?php if(mb_strlen($product->name) > 24): ?> 
                                     ...
                                     <?php endif; ?></a>
                                     </p>
-                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                    <a href="#" class="btn btn-fefault add-to-cart cart" data-id="<?=$product->id?>"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                 </div>
                                 <div class="product-overlay">
                                     <div class="overlay-content">
@@ -75,7 +76,7 @@ use yii\widgets\LinkPager;
                                             <?= $product->name ?>
                                             </a>
                                         </p>
-                                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                        <a href="#" class="btn btn-fefault add-to-cart cart" data-id="<?=$product->id?>"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                     </div>
                                 </div>
                                 <?php if ($product->new === 1 && $product->sale === 0): ?>

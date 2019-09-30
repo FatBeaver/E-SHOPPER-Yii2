@@ -4,7 +4,11 @@ use frontend\assets\EshoperAsset;
 use frontend\assets\MinIE9Asset;
 use yii\helpers\Url;
 use yii\helpers\Html;
-
+if (isset($_SESSION['cart'])) 
+{
+	$qtyArray = array_column($_SESSION['cart'], 'qty');
+    $count = array_sum($qtyArray);
+}
 EshoperAsset::register($this);
 MinIE9Asset::register($this);
 ?>
@@ -107,7 +111,8 @@ MinIE9Asset::register($this);
 								<li><a href="#"><i class="fa fa-user"></i> Account</a></li>
 								<li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
 								<li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-								<li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+								<li><a href="#" id="cart-count" onclick="getCart()"><i class="fa fa-shopping-cart" >
+								</i> Cart <?php if (isset($_SESSION['cart'])) echo $count?></a></li>
 								<li><a href="login.html"><i class="fa fa-lock"></i> Login</a></li>
 							</ul>
 						</div>
@@ -322,7 +327,20 @@ MinIE9Asset::register($this);
 		</div>
 		
 	</footer><!--/Footer-->
-	
+
+<?php
+yii\bootstrap\Modal::begin([
+	'header' => '<h2>Корзина товаров</h2>',
+	'id' => 'product-cart-id',
+	'size' => 'modal-lg',
+	'footer' => '<button type="button" class="btn btn-default" data-dismiss="modal">Продолжить покупки</button>
+				<button type="button" class="btn btn-danger" onclick="clearCart()">Очистить корзину</button> 
+				<a href="/cart/view" class="btn btn-success" >Оформить заказ</a>'
+]);
+
+yii\bootstrap\Modal::end(); 
+?>
+
 <?php $this->endBody() ?>
 </body>
 </html>

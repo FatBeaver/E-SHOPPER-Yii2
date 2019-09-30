@@ -7,6 +7,92 @@ $(".catalog").accordion({
     collapsible: true
 });
 
+function showCart(cart) {
+    $('#product-cart-id .modal-body').html(cart);
+    $('#cart-count').text();
+    $('#product-cart-id').modal();
+}
+
+function editCart(cart) {
+    $('#cart-count').html('<i class="fa fa-shopping-cart"></i> Cart ' + cart);
+}
+
+function getCart() {
+    $.ajax({
+        url: '/cart/show',
+        type: 'GET',
+        success: function(res) {
+            showCart(res);
+        }
+    });
+    return false;
+}
+
+function clearCart() {
+    $.ajax({
+        url: '/cart/clear',
+        type: 'GET',
+        success: function(res) {
+            showCart(res);
+        }
+    });
+}
+
+$('#product-cart-id .modal-body').on('click', '.cart_quantity_delete', function(e) {
+    e.preventDefault();
+    var id = $(this).data('id');
+    $.ajax({
+        url: '/cart/delete-item',
+        data: { id: id },
+        type: 'GET',
+        success: function(res) {
+            if (!res) alert('Ошибка.Неудалось очистить корзину');
+            showCart(res);
+        },
+        error: function() {
+            alert("Ошибка.Не удалось удалить товар из корзины");
+        }
+    });
+});
+
+
+$('.add-to-cart').on('click', function(e) {
+    e.preventDefault();
+    $.ajax({
+        url: '/cart/editicon',
+        type: 'GET',
+        success: function(res) {
+            if (!res) alert('Ошибка.Неудалось очистить корзину');
+            editCart(res);
+        },
+    });
+});
+
+$('.add-to-cart').on('click', function(e) {
+    e.preventDefault();
+    var id = $(this).data('id'),
+        qty = $('#qty').val();
+    $.ajax({
+        url: '/cart/add',
+        data: { id: id, qty: qty },
+        type: 'GET',
+        success: function(res) {
+            if (!res) {
+                alert("Ошибка.Неверный идентификатор товара");
+                return false;
+            }
+            showCart(res);
+        },
+        error: function() {
+            alert("Ошибка добавления товара в корзину");
+        }
+    });
+});
+
+
+
+
+
 var RGBChange = function() {
     $('#RGB').css('background', 'rgb(' + r.getValue() + ',' + g.getValue() + ',' + b.getValue() + ')')
 };

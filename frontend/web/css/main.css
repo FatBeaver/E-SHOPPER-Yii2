@@ -707,6 +707,12 @@ h2.title:before {
     margin-bottom: 0px;
 }
 
+.modal-dialog .modal-content {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+}
+
 .catalog {
     padding-left: 20px;
     border: 1px solid rgb(245, 243, 243);

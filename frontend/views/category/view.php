@@ -75,7 +75,9 @@ use yii\widgets\LinkPager;
                                             <?= $product->name ?>
                                             </a>
                                         </p>
-                                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                        <a href="<?= Url::to(['cart/add', 'id' => $product->id])?>" 
+                                        class="btn btn-fefault add-to-cart cart"
+                                data-id="<?=$product->id?>"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                     </div>
                                 </div>
                                 <?php if ($product->new === 1 && $product->sale === 0): ?>
