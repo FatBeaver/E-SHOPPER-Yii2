@@ -1,11 +1,6 @@
-<?php 
-
-use yii\helpers\Html;
-use yii\helpers\Url;
+<?php
 
 ?>
-
-<?php if (isset($_SESSION['cart'])) :?>
 <div class="table-responsive cart_info" style="width:width:900px !imporatnt">
     <table class="table table-condensed" >
         <thead>
@@ -19,7 +14,7 @@ use yii\helpers\Url;
             </tr>
         </thead>
         <tbody>
-        <?php if (!empty($_SESSION['cart'])) foreach($session as $id => $product): ?>
+        <?php if (!empty($_SESSION['cart'])) foreach($_SESSION['cart'] as $id => $product): ?>
             <tr>
                 <td class="cart_product"> 
                     
@@ -64,6 +59,3 @@ use yii\helpers\Url;
         </tbody>
     </table>
 </div>
-<?php else: ?>
-<h3>Корзина пуста...</h3>                      
-<?php endif; ?>

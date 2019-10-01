@@ -65,10 +65,10 @@ use yii\helpers\Url;
                     </td>
                     <td class="cart_quantity">
                         <div class="cart_quantity_button">
-                            <a class="cart_quantity_up" href=""> + </a>
-                            <input class="cart_quantity_input" type="text" name="quantity" value="<?= $product['qty']?>" 
+                            <a class="cart_quantity_up" href="#" data-id="<?=$id?>"> + </a>
+                            <input class="cart_quantity_input" data-id="<?=$id?>" type="text" name="quantity" value="<?= $product['qty']?>" 
                             autocomplete="off" size="2">
-                            <a class="cart_quantity_down" href=""> - </a>
+                            <a class="cart_quantity_down" href="#" data-id="<?=$id?>"> - </a>
                         </div>
                     </td>
                     <td class="cart_price">

@@ -113,6 +113,15 @@ class CartController extends AppController
                     Менеджер вскоре свяжется с вами.');
 
                 $this->saveOrderItems($session['cart'], $order->id);
+
+                $qtyArray = array_column($_SESSION['cart'], 'qty');
+                $count = array_sum($qtyArray);
+                Yii::$app->mailer->compose('order')
+                    ->setFrom(['childrenofbodom737@gmail.com' => 'E-Shoper'])
+                    ->setTo($order->email)
+                    ->setSubject('Заказ')
+                    ->send();
+
                 unset($_SESSION['cart']);
 
                 return $this->render('view', [
@@ -138,6 +147,54 @@ class CartController extends AppController
         ]);
     }
 
+    public function actionCartPlus()
+    {   
+        $session = Yii::$app->session;
+        $session->open();
+        $id = Yii::$app->request->get('id');
+
+        $_SESSION['cart'][$id]['qty'] += 1;
+        $session['cart.sum'] += $_SESSION['cart'][$id]['price']; 
+
+        $qtyArray = array_column($_SESSION['cart'], 'qty');
+        $count = array_sum($qtyArray);
+
+        return $this->renderPartial('cart-modal', [
+            'session' => $session['cart'],
+            'count' => $count
+        ]);  
+    }
+
+    public function actionCartMinus()
+    {   
+        $session = Yii::$app->session;
+        $session->open();
+        $id = Yii::$app->request->get('id');
+
+        $_SESSION['cart'][$id]['qty'] -= 1;
+        $session['cart.sum'] -= $_SESSION['cart'][$id]['price'];
+
+        if ($_SESSION['cart'][$id]['qty'] <= 0 && $session['cart.sum'] < 0) {
+            $session['cart.sum'] = array_sum(array_column($_SESSION['cart']['price'], 'price')); 
+            $_SESSION['cart'][$id]['qty'] = 1;
+            $qtyArray = array_column($_SESSION['cart'], 'qty');
+            $count = array_sum($qtyArray);
+
+            return $this->renderPartial('cart-modal', [
+                'session' => $session['cart'],
+                'count' => $count
+            ]);  
+        } else {
+            $qtyArray = array_column($_SESSION['cart'], 'qty');
+            $count = array_sum($qtyArray);
+
+            return $this->renderPartial('cart-modal', [
+                'session' => $session['cart'],
+                'count' => $count
+            ]);  
+        }
+    }
+
     protected function saveOrderItems($items, $order_id)
     {
         foreach($items as $id => $item)
@@ -152,4 +209,5 @@ class CartController extends AppController
             $item_order->save(false);
         }
     }
+
 }
