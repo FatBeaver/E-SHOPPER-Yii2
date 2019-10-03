@@ -1,41 +1,61 @@
-<?php
-
-/* @var $this yii\web\View */
-/* @var $form yii\bootstrap\ActiveForm */
-/* @var $model \common\models\LoginForm */
+<?php 
 
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
-$this->title = 'Login';
-$this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="site-login">
-    <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>Please fill out the following fields to login:</p>
+<section id="form"><!--form-->
+    <div class="container">
 
-    <div class="row">
-        <div class="col-lg-5">
-            <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
+        <div class="row">
 
-                <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
+            <div class="col-sm-4 col-sm-offset-1">
+                <?php $form = ActiveForm::begin(['id' => 'login-form', 'action' => '/site/login']); ?>
 
-                <?= $form->field($model, 'password')->passwordInput() ?>
+                    <?= $form->field($login, 'email')->textInput(['autofocus' => true]) ?>
 
-                <?= $form->field($model, 'rememberMe')->checkbox() ?>
+                    <?= $form->field($login, 'password')->passwordInput() ?>
 
-                <div style="color:#999;margin:1em 0">
-                    If you forgot your password you can <?= Html::a('reset it', ['site/request-password-reset']) ?>.
-                    <br>
-                    Need new verification email? <?= Html::a('Resend', ['site/resend-verification-email']) ?>
-                </div>
+                    <?= $form->field($login, 'rememberMe')->checkbox() ?>
+                    
+                    <div class="form-group">
+                        <?= Html::submitButton('Login', [
+                            'class' => 'btn btn-primary', 
+                            'name' => 'login-button',
+                            'form' => 'login-form'
+                            ]) ?>
+                    </div>
 
-                <div class="form-group">
-                    <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
-                </div>
+                <?php ActiveForm::end(); ?>
+            </div>
+            
 
-            <?php ActiveForm::end(); ?>
+            <div class="col-sm-1">
+                <h2 class="or">OR</h2>
+            </div>
+
+            <div class="col-sm-4">
+                <?php $form = ActiveForm::begin(['id' => 'form-signup', 'action' => '/site/sign-up']); ?>
+
+                    <?= $form->field($signUp, 'username')->textInput() ?>
+
+                    <?= $form->field($signUp, 'email') ?>
+
+                    <?= $form->field($signUp, 'password')->passwordInput() ?>
+
+                    <div class="form-group">
+                        <?= Html::submitButton('Signup', [
+                            'class' => 'btn btn-primary', 
+                            'name' => 'signup-button',
+                            'form' => 'form-signup'
+                            ]) ?>
+                    </div>
+
+                <?php ActiveForm::end(); ?>
+            </div>
+
         </div>
+
     </div>
-</div>
+</section><!--/form-->

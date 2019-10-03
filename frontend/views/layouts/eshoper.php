@@ -113,7 +113,17 @@ MinIE9Asset::register($this);
 								<li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
 								<li><a href="#" id="cart-count" onclick="getCart()"><i class="fa fa-shopping-cart" >
 								</i> Cart <?php if (isset($_SESSION['cart'])) echo $count?></a></li>
-								<li><a href="login.html"><i class="fa fa-lock"></i> Login</a></li>
+								<?php if(Yii::$app->user->isGuest): ?>
+								<li>
+									<a href="<?= Url::to(['/site/login']) ?>">
+									<i class="fa fa-lock"></i> Login</a>
+								</li>
+								<?php else: ?>
+								<li>
+									<a href="<?= Url::to(['/site/logout']) ?>">
+									<i class="fa fa-lock"></i> Logout (<?= Yii::$app->user->identity['username']?>)</a>
+								</li>
+								<?php endif; ?>
 							</ul>
 						</div>
 					</div>

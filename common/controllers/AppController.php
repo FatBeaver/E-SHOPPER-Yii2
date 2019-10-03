@@ -6,7 +6,7 @@ use yii\base\Controller;
 
 class AppController extends Controller 
 {
-    public $layout = '@app/views/layouts/eshoper.php';
+    public $layout = '@frontend/views/layouts/eshoper.php';
 
     public function setMeta($title = null, $keywords = null, $description = null)
     {
