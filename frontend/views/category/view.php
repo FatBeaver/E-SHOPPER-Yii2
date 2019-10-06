@@ -60,12 +60,16 @@ use yii\widgets\LinkPager;
                                     'height' => '230vh']) ?>
                                     <h2>$<?= $product->price; ?></h2>
                                     <p><a href="<?= Url::to(['product/view', 'id' => $product->id]) ?>" 
-                                            style="color:#555"><?= substr($product->name, 0, 25);?>
+                                            style="color:#555"><?= mb_substr($product->name, 0, 25);?>
                                     <?php if(mb_strlen($product->name) > 24): ?> 
                                     ...
                                     <?php endif; ?></a>
                                     </p>
-                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                    <a href="#" style="margin:5px auto 15px auto;"  class="btn btn-default add-to-cart" 
+                                        data-id="<?=$product->id?>">
+                                        <i class="fa fa-shopping-cart">
+                                        </i>Add to cart
+                                    </a>
                                 </div>
                                 <div class="product-overlay">
                                     <div class="overlay-content">
@@ -76,7 +80,7 @@ use yii\widgets\LinkPager;
                                             </a>
                                         </p>
                                         <a href="<?= Url::to(['cart/add', 'id' => $product->id])?>" 
-                                        class="btn btn-fefault add-to-cart cart"
+                                        class="btn btn-fefault add-to-cart cart" style="margin:5px auto 15px auto;" 
                                 data-id="<?=$product->id?>"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                     </div>
                                 </div>
@@ -87,12 +91,7 @@ use yii\widgets\LinkPager;
                                     <?= Html::img("@web/images/home/sale.png", ['alt' => 'sale', 'class' => 'new']) ?>
                                 <?php endif; ?>
                             </div>
-                            <div class="choose">
-                                <ul class="nav nav-pills nav-justified">
-                                    <li><a href=""><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-                                    <li><a href=""><i class="fa fa-plus-square"></i>Add to compare</a></li>
-                                </ul>
-                            </div>
+                            
                         </div>
                     </div>
                     <?php endforeach; ?>

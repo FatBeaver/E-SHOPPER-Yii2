@@ -12,9 +12,10 @@ return [
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
     'modules' => [],
-    'defaultRoute' => '/site/index',
+    'defaultRoute' => '/order/index',
     'components' => [
         'request' => [
+            'baseUrl' => '/backend',
             'csrfParam' => '_csrf-backend',
         ],
         'user' => [

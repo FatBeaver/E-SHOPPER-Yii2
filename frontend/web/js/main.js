@@ -131,9 +131,31 @@ $('.add-to-cart').on('click', function(e) {
         }
     });
 });
+////////////////////////////////////////////////////////////////////////////
+$('.add-to-review').on('click', function(e) {
+    e.preventDefault();
+    var text = $('#review_textarea').val();
+    var id = $(this).data('id');
+    $.ajax({
+        url: '/product/write-review',
+        data: { text: text, id: id },
+        type: "POST",
+        success: function(result) {
+            if (!result) {
+                alert("Ошибка добавления отзыва :(");
+                return false;
+            }
+            showReviews(result);
+        },
+        error: function() {
+            alert("Ляяя сори, ошибка(((");
+        }
+    });
+});
 
-
-
+function showReviews(res) {
+    $('.ajax-reviews').html(res);
+}
 
 
 var RGBChange = function() {

@@ -54,7 +54,7 @@ MinIE9Asset::register($this);
 					<div class="col-sm-6">
 						<div class="contactinfo">
 							<ul class="nav nav-pills">
-								<li><a href="#"><i class="fa fa-phone"></i> +2 95 01 88 821</a></li>
+								<li><a href="#"><i class="fa fa-phone"></i> 8-910-718-37-03</a></li>
 								<li><a href="#"><i class="fa fa-envelope"></i> childrenofbodom737@gmail.com</a></li>
 							</ul>
 						</div>
@@ -82,35 +82,13 @@ MinIE9Asset::register($this);
 							<a href="<?= Url::home() ?>"><img src="/images/home/logo.png" alt="home_logo"/></a>
 						</div>
 						<div class="btn-group pull-right">
-							<div class="btn-group">
-								<button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-									USA
-									<span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu">
-									<li><a href="#">Canada</a></li>
-									<li><a href="#">UK</a></li>
-								</ul>
-							</div>
 							
-							<div class="btn-group">
-								<button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-									DOLLAR
-									<span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu">
-									<li><a href="#">Canadian Dollar</a></li>
-									<li><a href="#">Pound</a></li>
-								</ul>
-							</div>
 						</div>
 					</div>
 					<div class="col-sm-8">
 						<div class="shop-menu pull-right">
 							<ul class="nav navbar-nav">
 								<li><a href="#"><i class="fa fa-user"></i> Account</a></li>
-								<li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
-								<li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
 								<li><a href="#" id="cart-count" onclick="getCart()"><i class="fa fa-shopping-cart" >
 								</i> Cart <?php if (isset($_SESSION['cart'])) echo $count?></a></li>
 								<?php if(Yii::$app->user->isGuest): ?>
@@ -146,23 +124,8 @@ MinIE9Asset::register($this);
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
 								<li><a href="index.html" class="active">Home</a></li>
-								<li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" class="sub-menu">
-                                        <li><a href="shop.html">Products</a></li>
-										<li><a href="product-details.html">Product Details</a></li> 
-										<li><a href="checkout.html">Checkout</a></li> 
-										<li><a href="cart.html">Cart</a></li> 
-										<li><a href="login.html">Login</a></li> 
-                                    </ul>
-                                </li> 
-								<li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" class="sub-menu">
-                                        <li><a href="blog.html">Blog List</a></li>
-										<li><a href="blog-single.html">Blog Single</a></li>
-                                    </ul>
-                                </li> 
-								<li><a href="404.html">404</a></li>
-								<li><a href="contact-us.html">Contact</a></li>
+								<li><a href="#" id="cart-count" onclick="getCart()"> 
+								Cart <?php if (isset($_SESSION['cart'])) echo $count?></a></li>
 							</ul>
 						</div>
 					</div>
@@ -253,7 +216,7 @@ MinIE9Asset::register($this);
 					</div>
 					<div class="col-sm-3">
 						<div class="address">
-							<img src="/images/home/map.png" alt="" />
+							<img src="/images/home/map.png" alt="virginia" />
 							<p>505 S Atlantic Ave Virginia Beach, VA(Virginia)</p>
 						</div>
 					</div>
@@ -344,8 +307,8 @@ yii\bootstrap\Modal::begin([
 	'id' => 'product-cart-id',
 	'size' => 'modal-lg',
 	'footer' => '<button type="button" class="btn btn-default" data-dismiss="modal">Продолжить покупки</button>
-				<button type="button" class="btn btn-danger" onclick="clearCart()">Очистить корзину</button> 
-				<a href="/cart/view" class="btn btn-success" >Оформить заказ</a>'
+			<button type="button" class="btn btn-danger" onclick="clearCart()">Очистить корзину</button> 
+			<a href="/cart/view" class="btn btn-success" >Оформить заказ</a>'
 ]);
 
 yii\bootstrap\Modal::end(); 

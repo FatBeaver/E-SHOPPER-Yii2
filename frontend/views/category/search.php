@@ -66,8 +66,10 @@ use yii\widgets\LinkPager;
                                     ...
                                     <?php endif; ?></a>
                                     </p>
-                                    <a href="#" class="btn btn-fefault add-to-cart cart" data-id="<?=$product->id?>"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                    <a href="#" style="margin:5px auto 15px auto;"  class="btn btn-fefault add-to-cart cart" data-id="<?=$product->id?>">
+                                    <i class="fa fa-shopping-cart"></i>Add to cart</a>
                                 </div>
+
                                 <div class="product-overlay">
                                     <div class="overlay-content">
                                         <h2>$<?= $product->price; ?></h2>
@@ -76,21 +78,21 @@ use yii\widgets\LinkPager;
                                             <?= $product->name ?>
                                             </a>
                                         </p>
-                                        <a href="#" class="btn btn-fefault add-to-cart cart" data-id="<?=$product->id?>"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                        <a href="#" style="margin:5px auto 15px auto;" class="btn btn-fefault add-to-cart cart" data-id="<?=$product->id?>">
+                                        <i class="fa fa-shopping-cart"></i>Add to cart</a>
                                     </div>
                                 </div>
+
                                 <?php if ($product->new === 1 && $product->sale === 0): ?>
                                     <?= Html::img("@web/images/home/new.png", ['alt' => 'new', 'class' => 'new']) ?>
                                 <?php endif; ?>
                                 <?php if ($product->sale === 1 && $product->new === 0): ?>
                                     <?= Html::img("@web/images/home/sale.png", ['alt' => 'sale', 'class' => 'new']) ?>
                                 <?php endif; ?>
+
                             </div>
                             <div class="choose">
-                                <ul class="nav nav-pills nav-justified">
-                                    <li><a href=""><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-                                    <li><a href=""><i class="fa fa-plus-square"></i>Add to compare</a></li>
-                                </ul>
+                               
                             </div>
                         </div>
                     </div>

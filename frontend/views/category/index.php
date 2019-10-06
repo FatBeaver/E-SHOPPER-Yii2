@@ -157,13 +157,6 @@ use yii\helpers\Url;
                                         <?= Html::img("@web/images/home/sale.png", ['alt' => 'sale', 'class' => 'new']) ?>
                                     <?php endif; ?>
                                 </div>
-            
-                                <div class="choose">
-                                    <ul class="nav nav-pills nav-justified">
-                                        <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-                                        <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
-                                    </ul>
-                                </div>
                             </div>
                         </div>
                     <?php endforeach;?>
@@ -195,8 +188,9 @@ use yii\helpers\Url;
                                 ]) ?>
                                 <h2>$<?= $product->price ?></h2>
                                 <p><?= $product->name ?></p>
-                                <a href="<?= Url::to(['cart/add', 'id' => $product->id])?>" 
-                                    class="btn btn-fefault cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                <a href="#" data-id="<?=$product->id?>"
+                                class="btn btn-fefault add-to-cart"><i class="fa fa-shopping-cart">
+                                </i>Add to cart</a>
                             </div>
                         </div>
                     </div>

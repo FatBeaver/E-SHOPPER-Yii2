@@ -2,11 +2,9 @@
 namespace backend\controllers;
 
 use Yii;
-use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\LoginForm;
-use yii\helpers\Url;
 use common\controllers\AppController;
 
 /**
@@ -23,7 +21,7 @@ class SiteController extends AppController
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout', 'signup', 'index'],
+                'only' => ['logout', 'index', 'update', 'create'],
                 'rules' => [
                     [
                         'actions' => ['login'],
@@ -31,7 +29,7 @@ class SiteController extends AppController
                         'roles' => ['?'],
                     ],
                     [
-                        'actions' => ['logout', 'index'],
+                        'actions' => ['index', 'create', 'update', 'view', 'logout'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -81,7 +79,7 @@ class SiteController extends AppController
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->render('index');
+            return Yii::$app->response->redirect(['order/index']);
         } else {
             $model->password = '';
 
@@ -100,6 +98,9 @@ class SiteController extends AppController
     {
         Yii::$app->user->logout();
 
-        return $this->render('login');
+        $model = new LoginForm();
+        return $this->render('login', [
+            'model' => $model,
+        ]);
     }
 }
